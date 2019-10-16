@@ -46,7 +46,7 @@ class Reports extends Component {
           ? <Spinner animation="border" />
           : (
             <div className="row">
-              <div className="col mx-auto mt-5">
+              <div className="col-sm-10 col-md-8 mx-auto mt-5">
                 <h3>Reports</h3>
                 <ul className="list-group">
                   {reportsJsx}

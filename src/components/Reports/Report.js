@@ -12,7 +12,8 @@ class Report extends Component {
     super()
 
     this.state = {
-      report: null
+      report: null,
+      editTitle: ''
     }
   }
 
