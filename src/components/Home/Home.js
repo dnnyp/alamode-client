@@ -53,7 +53,7 @@ class Home extends Component {
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>URL</h3>
+          <h3>Generate a new report:</h3>
           <Form onSubmit={this.onScrapeUrl}>
             <Form.Group controlId="url">
               <Form.Label>URL</Form.Label>

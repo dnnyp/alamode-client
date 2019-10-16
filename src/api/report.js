@@ -13,3 +13,13 @@ export const scrapeUrl = (url, user) => {
     }
   })
 }
+
+export const index = user => {
+  return axios({
+    url: apiUrl + '/reports',
+    method: 'GET',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
