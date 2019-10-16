@@ -23,3 +23,23 @@ export const index = user => {
     }
   })
 }
+
+export const show = (id, user) => {
+  return axios({
+    url: apiUrl + '/reports/' + id,
+    method: 'GET',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
+
+export const destroy = (id, user) => {
+  return axios({
+    url: apiUrl + '/reports/' + id,
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}

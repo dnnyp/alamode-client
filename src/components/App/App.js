@@ -10,6 +10,7 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Home from '../Home/Home'
 import Reports from '../Reports/Reports'
+import Report from '../Reports/Report'
 
 class App extends Component {
   constructor () {
@@ -61,6 +62,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/reports' render={() => (
             <Reports alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/reports/:id' render={() => (
+            <Report alert={this.alert} user={user} />
           )} />
         </main>
       </Fragment>
