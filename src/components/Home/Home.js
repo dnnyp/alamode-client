@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { scrapeUrl } from '../../api/report'
 import messages from '../AutoDismissAlert/messages'
 
+import InputGroup from 'react-bootstrap/InputGroup'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
@@ -48,31 +49,21 @@ class Home extends Component {
   }
 
   render () {
-    const { url } = this.state
-
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
           <h3>Generate a new report:</h3>
-          <Form onSubmit={this.onScrapeUrl}>
-            <Form.Group controlId="url">
-              <Form.Label>URL</Form.Label>
-              <Form.Control
-                required
-                name="url"
-                value={url}
-                type="text"
-                placeholder="URL"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-            <Button
-              variant="outline-secondary"
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Form>
+          <InputGroup className="mb-3">
+            <Form.Control as="select" name="url" onChange={this.handleChange}>
+              <option disabled selected value> -- select an website -- </option>
+              <option value="">East Dane</option>
+              <option value="">Nordstrom</option>
+              <option value="https://www.shopbop.com/club-monaco/br/v=1/10148.htm">Shopbop</option>
+            </Form.Control>
+            <InputGroup.Append>
+              <Button variant="outline-secondary" onClick={this.onScrapeUrl}>Submit</Button>
+            </InputGroup.Append>
+          </InputGroup>
         </div>
       </div>
     )
