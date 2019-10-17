@@ -7,7 +7,7 @@ export default {
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   createReportSuccess: 'Report created successfully!',
-  createReportFailure: 'Failed to create report. Please check the URL and try again.',
+  createReportFailure: 'Please select a report to generate.',
   getReportsFailure: 'Failed to get reports.',
   getReportFailure: 'Failed to get report.',
   destroyReportSuccess: 'Report successfully deleted!',

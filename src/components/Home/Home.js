@@ -53,17 +53,19 @@ class Home extends Component {
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
           <h3>Generate a new report:</h3>
-          <InputGroup className="mb-3">
-            <Form.Control as="select" name="url" onChange={this.handleChange}>
-              <option disabled selected value> -- select an website -- </option>
-              <option value="">East Dane</option>
-              <option value="">Nordstrom</option>
-              <option value="https://www.shopbop.com/club-monaco/br/v=1/10148.htm">Shopbop</option>
-            </Form.Control>
-            <InputGroup.Append>
-              <Button variant="outline-secondary" onClick={this.onScrapeUrl}>Submit</Button>
-            </InputGroup.Append>
-          </InputGroup>
+          <Form onSubmit={this.onScrapeUrl}>
+            <InputGroup className="mb-3">
+              <Form.Control as="select" name="url" defaultValue="default" onChange={this.handleChange}>
+                <option value="default" disabled> -- select a website -- </option>
+                <option value="">East Dane</option>
+                <option value="">Nordstrom</option>
+                <option value="https://www.shopbop.com/club-monaco/br/v=1/10148.htm">Shopbop</option>
+              </Form.Control>
+              <InputGroup.Append>
+                <Button variant="outline-secondary" type="submit">Submit</Button>
+              </InputGroup.Append>
+            </InputGroup>
+          </Form>
         </div>
       </div>
     )
