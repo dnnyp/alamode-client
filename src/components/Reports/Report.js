@@ -103,18 +103,22 @@ class Report extends Component {
                   ? (
                     <Fragment>
                       <a rel="noopener noreferrer" href={this.state.report.url} target="_blank"><h3>{this.state.report.title}</h3></a>
-                      <Button
-                        variant="outline-secondary"
-                        onClick={this.onEdit}
-                      >
-                        Edit Title
-                      </Button>
-                      <Button
-                        variant="outline-secondary"
-                        onClick={this.onDelete}
-                      >
-                        Delete Report
-                      </Button>
+                      {this.state.report.owner === this.props.user._id &&
+                        <Fragment>
+                          <Button
+                            variant="outline-secondary"
+                            onClick={this.onEdit}
+                          >
+                            Edit Title
+                          </Button>
+                          <Button
+                            variant="outline-secondary"
+                            onClick={this.onDelete}
+                          >
+                            Delete Report
+                          </Button>
+                        </Fragment>
+                      }
                     </Fragment>
                   )
                   : (

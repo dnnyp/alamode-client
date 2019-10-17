@@ -63,13 +63,15 @@ class Reports extends Component {
     const reportsJsx = this.state.reports.map(report => (
       <li className="list-group-item d-flex justify-content-between" key={report._id}>
         <Link to={`/reports/${report._id}`}>{report.title}</Link>
-        <Button
-          variant="outline-secondary"
-          size="sm"
-          onClick={() => this.onDelete(report._id)}
-        >
-          Delete
-        </Button>
+        {report.owner === this.props.user._id &&
+          <Button
+            variant="outline-secondary"
+            size="sm"
+            onClick={() => this.onDelete(report._id)}
+          >
+            Delete
+          </Button>
+        }
       </li>
     ))
 
