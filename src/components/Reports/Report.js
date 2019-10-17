@@ -8,6 +8,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
 class Report extends Component {
   constructor () {
@@ -72,15 +73,19 @@ class Report extends Component {
   onUpdateTitle = event => {
     event.preventDefault()
 
-    const { alert, history, match, user } = this.props
+    const { alert, match, user } = this.props
 
     updateTitle(match.params.id, this.state.newTitle, user)
+      .then(responseData => this.setState({
+        report: responseData.data.report,
+        newTitle: responseData.data.report.title,
+        changeTitle: false
+      }))
       .then(() => alert({
         heading: 'Title successfully updated',
         message: messages.updateReportTitleSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/reports'))
       .catch(error => {
         console.error(error)
         alert({
@@ -104,7 +109,7 @@ class Report extends Component {
                     <Fragment>
                       <a rel="noopener noreferrer" href={this.state.report.url} target="_blank"><h3>{this.state.report.title}</h3></a>
                       {this.state.report.owner === this.props.user._id &&
-                        <Fragment>
+                        <ButtonGroup size="sm" className="mt-3">
                           <Button
                             variant="outline-secondary"
                             onClick={this.onEdit}
@@ -117,7 +122,7 @@ class Report extends Component {
                           >
                             Delete Report
                           </Button>
-                        </Fragment>
+                        </ButtonGroup>
                       }
                     </Fragment>
                   )
