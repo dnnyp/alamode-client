@@ -1,14 +1,14 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { show, destroy, updateTitle } from '../../api/report'
 import messages from '../AutoDismissAlert/messages'
 
 import Spinner from 'react-bootstrap/Spinner'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
+
+import ReportControls from './ReportControls'
+import UpdateTitle from './UpdateTitle'
+import ProductTable from './ProductTable'
 
 class Report extends Component {
   constructor () {
@@ -106,42 +106,25 @@ class Report extends Component {
               <div className="col mx-auto mt-5">
                 {!this.state.changeTitle
                   ? (
-                    <Fragment>
-                      <a rel="noopener noreferrer" href={this.state.report.url} target="_blank"><h3>{this.state.report.title}</h3></a>
-                      {this.state.report.owner === this.props.user._id &&
-                        <ButtonGroup size="sm" className="mt-3">
-                          <Button
-                            variant="outline-secondary"
-                            onClick={this.onEdit}
-                          >
-                            Edit Title
-                          </Button>
-                          <Button
-                            variant="outline-secondary"
-                            onClick={this.onDelete}
-                          >
-                            Delete Report
-                          </Button>
-                        </ButtonGroup>
-                      }
-                    </Fragment>
+                    <ReportControls
+                      url={this.state.report.url}
+                      title={this.state.report.title}
+                      owner={this.state.report.owner}
+                      user={this.props.user._id}
+                      onClick={this.onEdit}
+                      onDelete={this.onDelete}
+                    />
                   )
                   : (
-                    <InputGroup className="mb-3">
-                      <FormControl
-                        placeholder="New Title"
-                        required
-                        name="newTitle"
-                        value={this.state.newTitle}
-                        type="text"
-                        onChange={this.handleChange}
-                      />
-                      <InputGroup.Append>
-                        <Button variant="outline-secondary" onClick={this.onUpdateTitle}>Update</Button>
-                      </InputGroup.Append>
-                    </InputGroup>
+                    <UpdateTitle
+                      handleChange={this.handleChange}
+                      onUpdateTitle={this.onUpdateTitle}
+                      newTitle={this.state.newTitle}
+                    />
                   )
                 }
+                <hr/>
+                <ProductTable products={this.state.report.products}/>
               </div>
             </div>
           )
