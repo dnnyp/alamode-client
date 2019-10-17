@@ -34,6 +34,21 @@ export const show = (id, user) => {
   })
 }
 
+export const updateTitle = (id, title, user) => {
+  return axios({
+    url: apiUrl + '/reports/' + id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      report: {
+        title
+      }
+    }
+  })
+}
+
 export const destroy = (id, user) => {
   return axios({
     url: apiUrl + '/reports/' + id,

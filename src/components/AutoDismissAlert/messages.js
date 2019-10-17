@@ -11,5 +11,7 @@ export default {
   getReportsFailure: 'Failed to get reports.',
   getReportFailure: 'Failed to get report.',
   destroyReportSuccess: 'Report successfully deleted!',
-  destroyReportFailure: 'Failed to delete report.'
+  destroyReportFailure: 'Failed to delete report.',
+  updateReportTitleSuccess: 'Report title successfully updated!',
+  updateReportTitleFailure: 'Failed to update report title.'
 }

@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React, { Fragment, Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { show, destroy } from '../../api/report'
+import { show, destroy, updateTitle } from '../../api/report'
 import messages from '../AutoDismissAlert/messages'
 
 import Spinner from 'react-bootstrap/Spinner'
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 
 class Report extends Component {
@@ -13,7 +15,8 @@ class Report extends Component {
 
     this.state = {
       report: null,
-      editTitle: ''
+      newTitle: '',
+      changeTitle: false
     }
   }
 
@@ -22,7 +25,8 @@ class Report extends Component {
 
     show(match.params.id, user)
       .then(responseData => this.setState({
-        report: responseData.data.report
+        report: responseData.data.report,
+        newTitle: responseData.data.report.title
       }))
       .catch(error => {
         console.error(error)
@@ -35,7 +39,11 @@ class Report extends Component {
       })
   }
 
-  delete = () => {
+  handleChange = event => this.setState({
+    [event.target.name]: event.target.value
+  })
+
+  onDelete = () => {
     const { alert, history, match, user } = this.props
 
     destroy(match.params.id, user)
@@ -55,6 +63,34 @@ class Report extends Component {
       })
   }
 
+  onEdit = () => {
+    this.setState({
+      changeTitle: true
+    })
+  }
+
+  onUpdateTitle = event => {
+    event.preventDefault()
+
+    const { alert, history, match, user } = this.props
+
+    updateTitle(match.params.id, this.state.newTitle, user)
+      .then(() => alert({
+        heading: 'Title successfully updated',
+        message: messages.updateReportTitleSuccess,
+        variant: 'success'
+      }))
+      .then(() => history.push('/reports'))
+      .catch(error => {
+        console.error(error)
+        alert({
+          heading: 'Failed to update report title',
+          message: messages.updateReportTitleFailure,
+          variant: 'danger'
+        })
+      })
+  }
+
   render () {
     return (
       <div>
@@ -63,13 +99,40 @@ class Report extends Component {
           : (
             <div className="row">
               <div className="col mx-auto mt-5">
-                <a rel="noopener noreferrer" href={this.state.report.url} target="_blank"><h3>{this.state.report.title}</h3></a>
-                <Button
-                  variant="primary"
-                  onClick={this.delete}
-                >
-                  Delete this report
-                </Button>
+                {!this.state.changeTitle
+                  ? (
+                    <Fragment>
+                      <a rel="noopener noreferrer" href={this.state.report.url} target="_blank"><h3>{this.state.report.title}</h3></a>
+                      <Button
+                        variant="outline-secondary"
+                        onClick={this.onEdit}
+                      >
+                        Edit Title
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        onClick={this.onDelete}
+                      >
+                        Delete Report
+                      </Button>
+                    </Fragment>
+                  )
+                  : (
+                    <InputGroup className="mb-3">
+                      <FormControl
+                        placeholder="New Title"
+                        required
+                        name="newTitle"
+                        value={this.state.newTitle}
+                        type="text"
+                        onChange={this.handleChange}
+                      />
+                      <InputGroup.Append>
+                        <Button variant="outline-secondary" onClick={this.onUpdateTitle}>Update</Button>
+                      </InputGroup.Append>
+                    </InputGroup>
+                  )
+                }
               </div>
             </div>
           )
