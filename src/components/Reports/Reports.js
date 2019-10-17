@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
-import { index } from '../../api/report'
+import { index, destroy } from '../../api/report'
 import messages from '../AutoDismissAlert/messages'
 
 import Spinner from 'react-bootstrap/Spinner'
+import Button from 'react-bootstrap/Button'
 
 class Reports extends Component {
   constructor () {
@@ -33,10 +34,42 @@ class Reports extends Component {
       })
   }
 
+  onDelete = (id) => {
+    const { alert, user } = this.props
+
+    destroy(id, user)
+      .then(() => alert({
+        heading: 'Report successfully deleted',
+        message: messages.destroyReportSuccess,
+        variant: 'success'
+      }))
+      .then(() => {
+        const refreshReports = [...this.state.reports].filter(report => report._id !== id)
+        this.setState({
+          reports: refreshReports
+        })
+      })
+      .catch(error => {
+        console.error(error)
+        alert({
+          heading: 'Failed to delete report',
+          message: messages.destroyReportFailure,
+          variant: 'danger'
+        })
+      })
+  }
+
   render () {
     const reportsJsx = this.state.reports.map(report => (
       <li className="list-group-item d-flex justify-content-between" key={report._id}>
         <Link to={`/reports/${report._id}`}>{report.title}</Link>
+        <Button
+          variant="outline-secondary"
+          size="sm"
+          onClick={() => this.onDelete(report._id)}
+        >
+          Delete
+        </Button>
       </li>
     ))
 
