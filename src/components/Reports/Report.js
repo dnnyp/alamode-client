@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import { show, destroy, updateTitle } from '../../api/report'
 import messages from '../AutoDismissAlert/messages'
 
 import Spinner from 'react-bootstrap/Spinner'
+import Button from 'react-bootstrap/Button'
 
 import ReportControls from './ReportControls'
 import UpdateTitle from './UpdateTitle'
@@ -103,7 +104,18 @@ class Report extends Component {
           ? <Spinner animation="border" />
           : (
             <div className="row">
-              <div className="col mx-auto mt-5">
+              <div className="col-12 mt-5">
+                <Link to={'/reports'}>
+                  <Button
+                    variant="outline-secondary"
+                    size="sm"
+                    className="mb-2"
+                  >
+                    Go Back
+                  </Button>
+                </Link>
+              </div>
+              <div className="col mx-auto">
                 {!this.state.changeTitle
                   ? (
                     <ReportControls
