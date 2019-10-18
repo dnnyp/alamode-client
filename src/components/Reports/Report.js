@@ -124,6 +124,8 @@ class Report extends Component {
                   )
                 }
                 <hr/>
+                <p><strong>Created at:</strong> {this.state.report.createdAt} | <strong>Updated at:</strong> {this.state.report.updatedAt}</p>
+                <hr/>
                 <ProductTable products={this.state.report.products}/>
               </div>
             </div>
