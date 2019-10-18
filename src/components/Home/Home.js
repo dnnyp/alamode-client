@@ -49,6 +49,8 @@ class Home extends Component {
   }
 
   render () {
+    // <option value="" disabled>East Dane</option>
+    // <option value="" disabled>Nordstrom</option>
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
@@ -57,8 +59,6 @@ class Home extends Component {
             <InputGroup className="mb-3">
               <Form.Control as="select" name="url" defaultValue="default" onChange={this.handleChange}>
                 <option value="default" disabled> -- select a website -- </option>
-                <option value="" disabled>East Dane</option>
-                <option value="" disabled>Nordstrom</option>
                 <option value="https://www.shopbop.com/club-monaco/br/v=1/10148.htm">Shopbop</option>
               </Form.Control>
               <InputGroup.Append>
