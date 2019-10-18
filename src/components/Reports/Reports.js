@@ -6,6 +6,7 @@ import messages from '../AutoDismissAlert/messages'
 
 import Spinner from 'react-bootstrap/Spinner'
 import Button from 'react-bootstrap/Button'
+import Badge from 'react-bootstrap/Badge'
 
 const styles = {
   reportTitle: {
@@ -69,20 +70,31 @@ class Reports extends Component {
   }
 
   render () {
-    const reportsJsx = this.state.reports.map(report => (
-      <li className="list-group-item d-flex justify-content-between" key={report._id}>
-        <Link to={`/reports/${report._id}`} style={styles.reportTitle}>{report.title}</Link>
-        {report.owner === this.props.user._id &&
-          <Button
-            variant="outline-secondary"
-            size="sm"
-            onClick={() => this.onDelete(report._id)}
-          >
-            Delete
-          </Button>
-        }
-      </li>
-    ))
+    const reportsJsx = this.state.reports.map(report => {
+      const createdDate = Date.parse(report.createdAt)
+      const currentDate = Date.now()
+      return (
+        <li className="list-group-item d-flex justify-content-between" key={report._id}>
+          <Link to={`/reports/${report._id}`} style={styles.reportTitle}>
+            {report.title}
+            {currentDate - createdDate < 7200000 &&
+              <Badge variant="primary" className="ml-2">
+              New
+              </Badge>
+            }
+          </Link>
+          {report.owner === this.props.user._id &&
+            <Button
+              variant="outline-secondary"
+              size="sm"
+              onClick={() => this.onDelete(report._id)}
+            >
+              Delete
+            </Button>
+          }
+        </li>
+      )
+    })
 
     return (
       <div>
