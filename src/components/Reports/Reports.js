@@ -7,6 +7,15 @@ import messages from '../AutoDismissAlert/messages'
 import Spinner from 'react-bootstrap/Spinner'
 import Button from 'react-bootstrap/Button'
 
+const styles = {
+  reportTitle: {
+    display: 'block',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap'
+  }
+}
+
 class Reports extends Component {
   constructor () {
     super()
@@ -62,7 +71,7 @@ class Reports extends Component {
   render () {
     const reportsJsx = this.state.reports.map(report => (
       <li className="list-group-item d-flex justify-content-between" key={report._id}>
-        <Link to={`/reports/${report._id}`}>{report.title}</Link>
+        <Link to={`/reports/${report._id}`} style={styles.reportTitle}>{report.title}</Link>
         {report.owner === this.props.user._id &&
           <Button
             variant="outline-secondary"
