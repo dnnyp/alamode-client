@@ -8,7 +8,7 @@ const styles = {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-    fontSize: 'calc(1em + 1vw)'
+    fontSize: 'calc(1em + 0.5vw)'
   }
 }
 
