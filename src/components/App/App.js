@@ -12,6 +12,12 @@ import Home from '../Home/Home'
 import Reports from '../Reports/Reports'
 import Report from '../Reports/Report'
 
+const styles = {
+  font: {
+    fontFamily: 'Montserrat'
+  }
+}
+
 class App extends Component {
   constructor () {
     super()
@@ -44,7 +50,7 @@ class App extends Component {
             message={alert.message}
           />
         ))}
-        <main className="container">
+        <main className="container" style={styles.font}>
           <Route exact path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />

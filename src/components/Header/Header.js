@@ -2,6 +2,15 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 
+const styles = {
+  brand: {
+    fontFamily: 'Open Sans'
+  },
+  links: {
+    fontFamily: 'Montserrat'
+  }
+}
+
 const authenticatedOptions = (
   <Fragment>
     <Nav.Link href="#home">Home</Nav.Link>
@@ -20,8 +29,8 @@ const unauthenticatedOptions = (
 
 const Header = ({ user }) => (
   <Navbar bg="light" variant="light" expand="md">
-    <Navbar.Brand href="#">
-      Shop Scrape
+    <Navbar.Brand href="#" style={styles.brand}>
+      À LA MODE
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
