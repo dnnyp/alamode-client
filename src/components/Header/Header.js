@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const styles = {
   brand: {
-    fontFamily: 'Open Sans'
+    fontFamily: 'Montserrat'
   },
   links: {
     fontFamily: 'Montserrat'
