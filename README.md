@@ -8,6 +8,8 @@ A future release will introduce the ability to schedule reports to run at config
 
 This is the repository for the client application. For the server repository and deployed applications please see the links below.
 
+![Application Screenshot](https://github.com/dnnyp/shop-scrape-app-client/blob/master/public/A%20LA%20MODE%20screenshot.png?raw=true)
+
 ## Setup and Installation
 - ```Fork``` and ```clone``` this repository
 - To contribute, please ```checkout``` to a new branch and submit ```pull``` requests
