@@ -59,6 +59,8 @@ class Home extends Component {
             <InputGroup className="mb-3">
               <Form.Control as="select" name="url" defaultValue="default" onChange={this.handleChange}>
                 <option value="default" disabled> -- select a website -- </option>
+                <option value="https://www.eastdane.com/brands-club-monaco/br/v=1/48853.htm" disabled>East Dane</option>
+                <option value="https://shop.nordstrom.com/brands/club-monaco--18278">Nordstrom</option>
                 <option value="https://www.shopbop.com/club-monaco/br/v=1/10148.htm">Shopbop</option>
               </Form.Control>
               <InputGroup.Append>
