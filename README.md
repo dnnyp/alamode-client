@@ -8,7 +8,7 @@ A future release will introduce the ability to schedule reports to run at config
 
 This is the repository for the client application. For the server repository and deployed applications please see the links below.
 
-![Application Screenshot](https://github.com/dnnyp/shop-scrape-app-client/blob/master/public/A%20LA%20MODE%20screenshot.png?raw=true)
+![Application Screenshot](https://github.com/dnnyp/alamode-client/blob/master/public/A%20LA%20MODE%20screenshot.png?raw=true)
 
 ## Setup and Installation
 - ```Fork``` and ```clone``` this repository
@@ -18,10 +18,10 @@ This is the repository for the client application. For the server repository and
 - To launch the app in your local browser, run ```npm start```
 
 ## Links
-- [API Repo](https://github.com/dnnyp/shop-scrape-app-api)
+- [API Repo](https://github.com/dnnyp/alamode-api)
 - [Deployed API](https://quiet-thicket-71875.herokuapp.com)
-- [Client Repo](https://github.com/dnnyp/shop-scrape-app-client)
-- [Deployed Client](https://dnnyp.github.io/shop-scrape-app-client)
+- [Client Repo](https://github.com/dnnyp/alamode-client)
+- [Deployed Client](https://dnnyp.github.io/alamode-app-client)
 
 ## Technologies Used
 - HTML5
@@ -50,10 +50,10 @@ The front end application was built using React.js and a Bootstrap library adapt
 A major component of this application is the interactive table which displays the actual report data. This table was built using react-bootstrap-table-2. This extension of Bootstrap is highly configurable and comes with many built-in tools for data manipulation. I utilized the provided documentation to experiment with different features to enhance the usefulness of the reports for my end users.
 
 ## Wireframes
-![Sign Up](https://github.com/dnnyp/shop-scrape-app-client/blob/master/public/Sign%20Up.png?raw=true)
-![Create Report](https://github.com/dnnyp/shop-scrape-app-client/blob/master/public/Create%20Report.png?raw=true)
-![Reports List](https://github.com/dnnyp/shop-scrape-app-client/blob/master/public/Reports%20List.png?raw=true)
-![Report Page](https://github.com/dnnyp/shop-scrape-app-client/blob/master/public/Report%20Page.png?raw=true)
+![Sign Up](https://github.com/dnnyp/alamode-client/blob/master/public/Sign%20Up.png?raw=true)
+![Create Report](https://github.com/dnnyp/alamode-client/blob/master/public/Create%20Report.png?raw=true)
+![Reports List](https://github.com/dnnyp/alamode-client/blob/master/public/Reports%20List.png?raw=true)
+![Report Page](https://github.com/dnnyp/alamode-client/blob/master/public/Report%20Page.png?raw=true)
 
 
 ## User Stories
