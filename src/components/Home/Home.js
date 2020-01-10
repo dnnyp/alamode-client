@@ -49,8 +49,6 @@ class Home extends Component {
   }
 
   render () {
-    // <option value="" disabled>East Dane</option>
-    // <option value="" disabled>Nordstrom</option>
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
@@ -59,9 +57,9 @@ class Home extends Component {
             <InputGroup className="mb-3">
               <Form.Control as="select" name="url" defaultValue="default" onChange={this.handleChange}>
                 <option value="default" disabled> -- select a website -- </option>
-                <option value="https://www.eastdane.com/brands-club-monaco/br/v=1/48853.htm" disabled>East Dane</option>
-                <option value="https://shop.nordstrom.com/brands/club-monaco--18278">Nordstrom</option>
-                <option value="https://www.shopbop.com/club-monaco/br/v=1/10148.htm">Shopbop</option>
+                <option value="https://www.eastdane.com/brands-club-monaco/br/v=1/48853.htm#/?f=merchandiseCategory=%26filterContext=48853%26limit=100%26baseIndex=0">East Dane</option>
+                <option value="https://shop.nordstrom.com/brands/club-monaco--18278?page=1">Nordstrom</option>
+                <option value="https://www.shopbop.com/club-monaco/br/v=1/10148.htm?view=100&baseIndex=0">Shopbop</option>
               </Form.Control>
               <InputGroup.Append>
                 <Button variant="outline-secondary" type="submit">Submit</Button>
