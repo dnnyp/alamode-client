@@ -6,6 +6,7 @@ export default {
   signOutSuccess: 'Come back soon!',
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
+  createReportInProgress: 'This may take several minutes.',
   createReportSuccess: 'Report created successfully!',
   createReportFailure: 'Please select a report to generate.',
   getReportsFailure: 'Failed to get reports.',

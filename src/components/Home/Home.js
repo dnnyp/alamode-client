@@ -27,6 +27,12 @@ class Home extends Component {
 
     const { alert, history, user } = this.props
 
+    alert({
+      heading: 'Creating Report',
+      message: messages.createReportInProgress,
+      variant: 'primary'
+    })
+
     scrapeUrl(this.state.url, user)
       .then(responseData => this.setState({
         created: responseData.data.report._id
