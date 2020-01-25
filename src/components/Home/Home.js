@@ -14,7 +14,7 @@ class Home extends Component {
 
     this.state = {
       url: '',
-      created: ''
+      jobId: ''
     }
   }
 
@@ -22,7 +22,7 @@ class Home extends Component {
     [event.target.name]: event.target.value
   })
 
-  onScrapeUrl = event => {
+  onCreateReport = event => {
     event.preventDefault()
 
     const { alert, history, user } = this.props
@@ -35,14 +35,14 @@ class Home extends Component {
 
     scrapeUrl(this.state.url, user)
       .then(responseData => this.setState({
-        created: responseData.data.report._id
+        jobId: responseData.data.job
       }))
-      .then(() => alert({
-        heading: 'Create Report Success',
-        message: messages.createReportSuccess,
-        variant: 'success'
-      }))
-      .then(() => history.push(`/reports/${this.state.created}`))
+      // .then(() => alert({
+      //   heading: 'Create Report Success',
+      //   message: messages.createReportSuccess,
+      //   variant: 'success'
+      // }))
+      .then(() => history.push(`/reports/new/${this.state.jobId}`))
       .catch(error => {
         console.error(error)
         this.setState({ url: '' })
@@ -59,7 +59,7 @@ class Home extends Component {
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
           <h3>Generate a new report:</h3>
-          <Form onSubmit={this.onScrapeUrl}>
+          <Form onSubmit={this.onCreateReport}>
             <InputGroup className="mb-3">
               <Form.Control as="select" name="url" defaultValue="default" onChange={this.handleChange}>
                 <option value="default" disabled> -- select a website -- </option>
