@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
+const apiUrl = require('./../../apiConfig').default
+const io = require('socket.io-client')
+const socket = io(apiUrl)
+
 class NewReport extends Component {
-  constructor () {
-    super()
-
-    this.state = {
-      jobId: ''
-    }
-  }
-
   componentDidMount () {
-    const { match } = this.props
+    const { match, history } = this.props
 
-    this.setState({ jobId: match.params.jobId })
+    socket.on(match.params.jobId, data => {
+      history.push(`/reports/${data.reportId}`)
+    })
   }
 
   render () {
