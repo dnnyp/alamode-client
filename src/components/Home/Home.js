@@ -37,11 +37,6 @@ class Home extends Component {
       .then(responseData => this.setState({
         jobId: responseData.data.job
       }))
-      // .then(() => alert({
-      //   heading: 'Create Report Success',
-      //   message: messages.createReportSuccess,
-      //   variant: 'success'
-      // }))
       .then(() => history.push(`/reports/new/${this.state.jobId}`))
       .catch(error => {
         console.error(error)
