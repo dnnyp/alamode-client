@@ -11,6 +11,15 @@ import ReportControls from './ReportControls'
 import UpdateTitle from './UpdateTitle'
 import ProductTable from './ProductTable'
 
+const styles = {
+  spinner: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    margin: '-1rem 0 0 -1rem'
+  }
+}
+
 class Report extends Component {
   constructor () {
     super()
@@ -101,7 +110,7 @@ class Report extends Component {
     return (
       <div>
         {!this.state.report
-          ? <Spinner animation="border" />
+          ? <Spinner animation="border" style={styles.spinner} />
           : (
             <div className="row">
               <div className="col-12 mt-5">

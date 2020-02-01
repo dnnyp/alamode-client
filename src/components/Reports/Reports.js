@@ -14,6 +14,12 @@ const styles = {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap'
+  },
+  spinner: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    margin: '-1rem 0 0 -1rem'
   }
 }
 
@@ -99,7 +105,7 @@ class Reports extends Component {
     return (
       <div>
         {!this.state.reports.length
-          ? <Spinner animation="border" />
+          ? <Spinner animation="border" style={styles.spinner} />
           : (
             <div className="row">
               <div className="col-sm-10 col-md-8 mx-auto mt-5">
