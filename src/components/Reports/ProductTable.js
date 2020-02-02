@@ -23,7 +23,20 @@ const tableColumns = [{
   dataField: 'sale',
   text: 'Product Sale Price',
   sort: true
+}, {
+  dataField: 'url',
+  text: 'Product URL',
+  hidden: true
 }]
+
+const selectRow = {
+  mode: 'radio',
+  clickToSelect: true,
+  hideSelectColumn: true,
+  onSelect: (row, isSelect, rowIndex, e) => {
+    window.open(row.url, '_blank')
+  }
+}
 
 const ProductTable = props => {
   return (
@@ -53,6 +66,7 @@ const ProductTable = props => {
                 striped
                 hover
                 wrapperClasses="table-responsive"
+                selectRow={selectRow}
               />
             </div>
           )
